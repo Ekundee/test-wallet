@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>test wallet</name>
+    </assembly>
+    <members>
+        <member name="M:test_wallet.Controllers.WalletController.GetWallets">
+            <summary>
+            Get all user wallet
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:test_wallet.Controllers.WalletController.GetWallet(System.Int32)">
+            <summary>
+            Get individual wallet
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:test_wallet.Controllers.WalletController.CreateWallet(test_wallet.Dtos.Wallet.NewWalletDto)">
+            <summary>
+            Create wallet
+            </summary>
+        </member>
+        <member name="M:test_wallet.Controllers.WalletController.LoginToWallet(test_wallet.Dtos.Wallet.WalletLoginDto)">
+            <summary>
+            Login to wallet
+            </summary>
+            <param name="userlogin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:test_wallet.Controllers.WalletController.FundUserWallet(test_wallet.Dtos.Wallet.FundWalletDto)">
+            <summary>
+            fund wallet
+            </summary>
+            <param name="walletToFund"></param>
+            <returns></returns>
+        </member>
+        <member name="M:test_wallet.Controllers.WalletController.TransferFunds(test_wallet.Dtos.Wallet.TransferFundsDto)">
+            <summary>
+            Transfer to another wallet
+            </summary>
+            <param name="transferFunds"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

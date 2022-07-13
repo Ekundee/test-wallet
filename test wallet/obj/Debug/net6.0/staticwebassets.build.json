@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "iO26L3fxnjKoUhQ9lTfcX8pn6y+3+UnlS7oB8+Jlr6g=",
+  "Source": "test wallet",
+  "BasePath": "_content/test wallet",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
