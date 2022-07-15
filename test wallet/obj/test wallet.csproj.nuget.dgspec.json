@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Documents\\GitHub\\CSharp-app-development\\test wallet\\test wallet\\test wallet.csproj": {}
+    "C:\\Users\\user\\Documents\\GitHub\\test wallet\\test wallet\\test wallet.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Documents\\GitHub\\CSharp-app-development\\test wallet\\test wallet\\test wallet.csproj": {
+    "C:\\Users\\user\\Documents\\GitHub\\test wallet\\test wallet\\test wallet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\CSharp-app-development\\test wallet\\test wallet\\test wallet.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\test wallet\\test wallet\\test wallet.csproj",
         "projectName": "test wallet",
-        "projectPath": "C:\\Users\\user\\Documents\\GitHub\\CSharp-app-development\\test wallet\\test wallet\\test wallet.csproj",
+        "projectPath": "C:\\Users\\user\\Documents\\GitHub\\test wallet\\test wallet\\test wallet.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Documents\\GitHub\\CSharp-app-development\\test wallet\\test wallet\\obj\\",
+        "outputPath": "C:\\Users\\user\\Documents\\GitHub\\test wallet\\test wallet\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -47,6 +47,10 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[11.0.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.7, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -103,7 +107,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

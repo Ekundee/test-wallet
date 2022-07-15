@@ -12,8 +12,8 @@ using test_wallet.DbContexts;
 namespace test_wallet.Migrations
 {
     [DbContext(typeof(WalletDbContext))]
-    [Migration("20220710225815_i")]
-    partial class i
+    [Migration("20220714200658_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

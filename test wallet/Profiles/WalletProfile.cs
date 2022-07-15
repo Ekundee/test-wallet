@@ -10,6 +10,8 @@ namespace test_wallet.Profiles
         {
             CreateMap<FundWalletDto, WalletModel>();
             CreateMap<NewWalletDto, WalletModel>();
+
+            CreateMap<WalletLoginResponseDto, WalletModel>();
         }
     }
 }

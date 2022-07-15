@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using test_wallet.Model;
 
 namespace test_wallet.Dtos.Wallet
 {
@@ -9,5 +10,13 @@ namespace test_wallet.Dtos.Wallet
 
         [Required(ErrorMessage = "Password Field cannot be empty")]
         public string Password { get; set; } = String.Empty;
+    }
+
+    public class WalletLoginResponseDto
+    {
+        public WalletModel? CurrentUser { get; set; }
+
+        public string AuthToken { get; set; }
+
     }
 }

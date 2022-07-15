@@ -9,6 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddSingleton<IWalletRepository, WalletRepository>();
 builder.Services.AddSingleton<ICustomPasswordHasher, CustomPasswordHasher>();   
+builder.Services.AddScoped<ITokenAuthorization, TokenAuthorization>();
+
+
 builder.Services.AddControllers();
 string mySqlConnectionStr = builder.Configuration.GetConnectionString("DefaultConnection");
 

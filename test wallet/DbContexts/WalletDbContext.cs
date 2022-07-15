@@ -22,10 +22,8 @@ namespace test_wallet.DbContexts
             base.OnModelCreating(modelBuilder);
 
             // Map entities to tables  
-            //modelBuilder.Entity<WalletModel>().ToTable("users");
-            modelBuilder.Entity<WalletModel>();
-
-            
+            modelBuilder.Entity<WalletModel>().ToTable("users");
+            // modelBuilder.Entity<WalletModel>();
         }
     }
 }

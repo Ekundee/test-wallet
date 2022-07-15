@@ -17,14 +17,16 @@ namespace test_wallet.Controllers
         private readonly IWalletRepository walletRepo;
         private readonly IMapper mapper;
         public ICustomPasswordHasher _passwordHasher;
+        public ITokenAuthorization _tokenAuthorization;
 
         private WalletDbContext walletDbContext;
-        public WalletController (IWalletRepository walletRepo, WalletDbContext context, IMapper mapper, ICustomPasswordHasher _passwordHasher)
+        public WalletController (IWalletRepository walletRepo, WalletDbContext context, IMapper mapper, ICustomPasswordHasher _passwordHasher, ITokenAuthorization tokenAuthorization)
         {
             this.walletRepo = walletRepo;
             this.walletDbContext = context;
             this.mapper = mapper;
             this._passwordHasher = _passwordHasher;
+            this._tokenAuthorization = tokenAuthorization;
         }
 
         /// <summary>
@@ -93,10 +95,11 @@ namespace test_wallet.Controllers
         /// <param name="userlogin"></param>
         /// <returns></returns>
         [HttpPost("login")]
-        public ActionResult<NewWalletDto> LoginToWallet(WalletLoginDto userlogin)
+        public ActionResult<WalletLoginResponseDto> LoginToWallet(WalletLoginDto userlogin)
         {
+            WalletLoginResponseDto LoginResponse = new();
 
-            var currentUser = walletDbContext.DbWallets.FirstOrDefault(wallet => wallet.Email == userlogin.Email);
+            WalletModel currentUser = walletDbContext.DbWallets.FirstOrDefault(wallet => wallet.Email == userlogin.Email);
             if(currentUser == null)
             {
                 return Unauthorized("User does not exist");
@@ -113,7 +116,13 @@ namespace test_wallet.Controllers
                 return Unauthorized("Passwords do not match");
             }
 
-            return  Ok(currentUser);
+            string token = _tokenAuthorization.CreateToken(currentUser);
+            
+            LoginResponse.CurrentUser = currentUser;
+            LoginResponse.AuthToken = token;
+            // return  Ok(currentUser);
+
+            return  Ok(LoginResponse);
         }
 
         /// <summary>

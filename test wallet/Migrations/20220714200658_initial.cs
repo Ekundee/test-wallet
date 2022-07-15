@@ -4,7 +4,7 @@
 
 namespace test_wallet.Migrations
 {
-    public partial class i : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
