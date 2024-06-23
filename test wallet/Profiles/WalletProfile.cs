@@ -12,6 +12,8 @@ namespace test_wallet.Profiles
             CreateMap<NewWalletDto, WalletModel>();
 
             CreateMap<WalletLoginResponseDto, WalletModel>();
+            CreateMap<UpdateUserDto, WalletModel>();
+            CreateMap<ChangePassword, WalletModel>();
         }
     }
 }

@@ -27,6 +27,7 @@ namespace test_wallet.Dtos.Wallet
         [Required]
         [Range(1,5000000000)]
         public decimal? Balance { get; set; } = 0;
+
         
     }
 }

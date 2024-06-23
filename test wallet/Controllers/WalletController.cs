@@ -76,6 +76,7 @@ namespace test_wallet.Controllers
             }
 
             WalletModel wallet = mapper.Map<WalletModel>(newWallet);
+            wallet.History = $"You account was created {DateTime.Now}";
 
             string newPassword = _passwordHasher.hashPassword(wallet.Password);
             wallet.Password = newPassword;
@@ -136,10 +137,49 @@ namespace test_wallet.Controllers
             var userId = walletToFund.Id;
             var wallet = walletDbContext.DbWallets.FirstOrDefault(wallet => wallet.Id == userId);
             wallet.Balance = wallet.Balance + walletToFund.Balance;
+            wallet.History = wallet.History + ";" + $"You funded your account with {walletToFund.Balance}";
             walletDbContext.DbWallets.Update(wallet);
             //walletRepo.CreateWallet(wallet);
             walletDbContext.SaveChanges();
             return CreatedAtAction(nameof(FundUserWallet), wallet);
+        }
+
+
+        /// <summary>
+        /// Update user wallet
+        /// </summary>
+        [HttpPut("/update")]
+        public ActionResult<WalletModel> UpdateUserInfo(UpdateUserDto updateUser)
+        {
+            var userId = updateUser.Id;
+            var wallet = walletDbContext.DbWallets.FirstOrDefault(wallet => wallet.Id == userId);
+            if (wallet == null) return NotFound();
+            if (updateUser.FirstName != null) wallet.FirstName = updateUser.FirstName;
+            if (updateUser.LastName != null) wallet.LastName = updateUser.LastName;
+            if (updateUser.Password != null) wallet.Password = updateUser.Password;
+            if (updateUser.Username != null) wallet.Username = updateUser.Username;
+            if (updateUser.DateOfBirth != null) wallet.DateOfBirth = updateUser.DateOfBirth;
+            if (updateUser.CurrencyType != null) wallet.CurrencyType = updateUser.CurrencyType;
+            wallet.History = wallet.History + ";" + $"Updated profile at {DateTime.Now}";
+            walletDbContext.DbWallets.Update(wallet);
+            walletDbContext.SaveChanges();
+            return Ok(wallet);
+        }  
+        
+        /// <summary>
+        /// Update user wallet
+        /// </summary>
+        [HttpPut("/change/password")]
+        public ActionResult<WalletModel> ChangePassword(ChangePassword changePassword)
+        {
+            var userId = changePassword.Id;
+            var wallet = walletDbContext.DbWallets.FirstOrDefault(wallet => wallet.Id == userId);
+            if (wallet == null) return NotFound();
+            if (changePassword.Password != null) wallet.FirstName = changePassword.Password;
+            wallet.History = wallet.History + ";" + $"Updated password at {DateTime.Now}";
+            walletDbContext.DbWallets.Update(wallet);
+            walletDbContext.SaveChanges();
+            return Ok(wallet);
         }
 
         /// <summary>
@@ -161,7 +201,11 @@ namespace test_wallet.Controllers
                     var recipientWallet = walletDbContext.DbWallets.FirstOrDefault(wallet => wallet.Id == recipientId);
                     var senderWallet = walletDbContext.DbWallets.FirstOrDefault(wallet => wallet.Id == senderId);
                     recipientWallet.Balance = recipientWallet.Balance + transferFunds.FundsSent;
+                    recipientWallet.History = recipientWallet.History + ";" + $"Your received {recipientWallet.CurrencyType} {transferFunds.FundsSent} from {senderWallet.FirstName} at {DateTime.Now}";
+                    
                     senderWallet.Balance = senderWallet.Balance - transferFunds.FundsSent;
+                    senderWallet.History = senderWallet.History + ";" + $"You transfered {senderWallet.CurrencyType} {transferFunds.FundsSent} to {recipientWallet.FirstName} at {DateTime.Now}";
+
                     walletDbContext.DbWallets.Update(recipientWallet);
                     walletDbContext.DbWallets.Update(senderWallet);
                     //walletRepo.CreateWallet(wallet);

@@ -36,6 +36,16 @@
             <param name="walletToFund"></param>
             <returns></returns>
         </member>
+        <member name="M:test_wallet.Controllers.WalletController.UpdateUserInfo(test_wallet.Dtos.Wallet.UpdateUserDto)">
+            <summary>
+            Update user wallet
+            </summary>
+        </member>
+        <member name="M:test_wallet.Controllers.WalletController.ChangePassword(test_wallet.Dtos.Wallet.ChangePassword)">
+            <summary>
+            Update user wallet
+            </summary>
+        </member>
         <member name="M:test_wallet.Controllers.WalletController.TransferFunds(test_wallet.Dtos.Wallet.TransferFundsDto)">
             <summary>
             Transfer to another wallet

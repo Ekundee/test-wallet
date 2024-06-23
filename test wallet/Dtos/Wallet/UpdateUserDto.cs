@@ -1,9 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace test_wallet.Model
-
+namespace test_wallet.Dtos.Wallet
 {
-    public class WalletModel
+    public class UpdateUserDto
     {
         public int Id { get; init; }
 
@@ -11,7 +10,6 @@ namespace test_wallet.Model
 
         public string? LastName { get; set; }
 
-        public string? Email { get; set; }
 
         public string? Password { get; set; }
 
@@ -20,12 +18,6 @@ namespace test_wallet.Model
         public string? DateOfBirth { get; set; }
 
         public string? CurrencyType { get; set; } = "NGN";
-
-        [Column(TypeName = "decimal(18,4)")]
-        public decimal? Balance { get; set; } = 0;
-
-        public string? History { get; set; } = String.Empty;
-
 
     }
 }
